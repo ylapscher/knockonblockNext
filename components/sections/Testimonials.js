@@ -7,11 +7,23 @@ import style from "./Testimonials.module.css";
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  const slidesPerView = 0;
-  const maxIndex = testimonials.length - slidesPerView;
+  const slidesPerView = isMobile ? 1 : 2;
+  const maxIndex = Math.ceil(testimonials.length / slidesPerView) - 1;
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
   // Intersection Observer to pause auto-scroll when not visible
   useEffect(() => {
@@ -30,17 +42,17 @@ const Testimonials = () => {
   }, []);
 
   // Auto-scroll functionality - only when visible
-  // useEffect(() => {
-  //   if (!isVisible) return;
+  useEffect(() => {
+    if (!isVisible) return;
 
-  //   const interval = setInterval(() => {
-  //     setCurrentIndex((prevIndex) =>
-  //       prevIndex >= maxIndex ? 0 : prevIndex + 1
-  //     );
-  //   }, 8000); // 8 seconds
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex >= maxIndex ? 0 : prevIndex + 1
+      );
+    }, 8000); // 8 seconds
 
-  //   return () => clearInterval(interval);
-  // }, [isVisible, maxIndex]);
+    return () => clearInterval(interval);
+  }, [isVisible, maxIndex]);
 
   const goToPrevious = () => {
     setCurrentIndex(currentIndex === 0 ? maxIndex : currentIndex - 1);
@@ -70,7 +82,11 @@ const Testimonials = () => {
             <div className={style["testimonials-slider-wrapper"]}>
               <div
                 className={style["testimonials-slider"]}
-                style={{ transform: `translateX(-${currentIndex * 33.333}%)` }}
+                style={{
+                  transform: `translateX(-${
+                    currentIndex * 50 * slidesPerView
+                  }%)`,
+                }}
               >
                 {testimonials.map((testimonial) => (
                   <div
