@@ -1,18 +1,17 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react';
-// import { useLocation, useNavigate } from 'react-router-dom';
-import { useScrollToSection } from '../../hooks/useScrollToSection';
-import style from './Header.module.css';
 import Image from 'next/image';
+
+import { useState, useEffect, useCallback } from 'react';
+import { useScrollToSection } from '@/hooks/useScrollToSection';
+import style from './Header.module.css';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolling, setIsScrolling] = useState(false);
-  // const location = useLocation();
-  // const navigate = useNavigate();
+
   const scrollToSection = useScrollToSection();
 
   // Throttled scroll handler for better performance
@@ -59,17 +58,6 @@ const Header = () => {
     };
   }, [handleScroll]);
 
-  // Handle scrolling after navigation using location state
-  // useEffect(() => {
-  //   if (location.pathname === '/' && location.state?.scrollTo) {
-  //     const element = document.getElementById(location.state.scrollTo);
-  //     if (element) {
-  //       element.scrollIntoView({ behavior: 'smooth' });
-  //     }
-  //     // Clear the state to prevent re-scrolling on subsequent renders
-  //     navigate(location.pathname, { replace: true, state: {} });
-  //   }
-  // }, [location, navigate]);
 
   const handleLogoClick = () => {
     if (location.pathname !== '/') {
@@ -112,7 +100,6 @@ const Header = () => {
           className={style['logo']} 
           style={{ cursor: 'pointer' }}
         >
-          {/* <Logo className={style['logo-svg']} /> */}
           <Image className={style['logo-svg']} src="/logo.png" width={50} height={50} alt="Knock on Block" />
           <span>Knock on Block</span>
         </div>
