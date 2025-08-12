@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import style from "./Hero.module.css";
 import { scrollToContact } from "@/lib/utils";
 
@@ -15,7 +16,13 @@ const Hero = () => {
           </button>
         </div>
         <div className={style["hero-image"]}>
-          <div className={style["placeholder-image"]}>🔧 Handyman at Work</div>
+          <Image
+            src="/logo.png"
+            alt="Knock On Block logo"
+            width={200}
+            height={200}
+            className={style["placeholder-image"]}
+          />
         </div>
       </div>
     </section>
