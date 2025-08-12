@@ -7,16 +7,17 @@ import style from "./Testimonials.module.css";
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [showOnePerSlide, setShowOnePerSlide] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  const slidesPerView = isMobile ? 1 : 2;
+  const slidesPerView = showOnePerSlide ? 1 : 2;
+
   const maxIndex = Math.ceil(testimonials.length / slidesPerView) - 1;
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setShowOnePerSlide(window.innerWidth < 1200);
     };
 
     checkScreenSize();
