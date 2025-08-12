@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import style from "./Footer.module.css";
+import { FaFacebook } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -66,7 +67,8 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className={style["social-link"]}
                 >
-                  📘 Facebook
+                  <FaFacebook />
+                  <p>Facebook</p>
                 </a>
               </div>
             </div>
