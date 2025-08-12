@@ -59,12 +59,13 @@
 .testimonials-slider-container {
   position: relative;
   margin-bottom: 3rem;
-  overflow: hidden;
+  overflow: unset;
+  overflow-x: clip;
 }
 
 .testimonials-slider-wrapper {
-  overflow: hidden;
   margin: 0 60px;
+  overflow-x: clip;
 }
 
 .testimonials-slider {
