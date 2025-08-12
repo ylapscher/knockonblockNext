@@ -168,11 +168,11 @@
 /* Responsive Design */
 @media (max-width: 1200px) {
   .testimonials-slider {
-    width: 200%; /* 2 slides per view on medium screens */
+    width: 200%; 
   }
   
   .testimonial-slide {
-    flex: 0 0 50%; /* Each slide takes 1/2 of the container */
+    flex: 0 0 50%; 
   }
 }
 
@@ -219,14 +219,6 @@
 
   .section-header h2 {
     font-size: 2.2rem;
-  }
-
-  .testimonials-slider {
-    width: 100%; /* 6 testimonials ÷ 1 per view = 6 positions */
-  }
-  
-  .testimonial-slide {
-    flex: 0 0 100%; /* Each slide takes full width */
   }
 
   .testimonials-slider-wrapper {
