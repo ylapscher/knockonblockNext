@@ -11,7 +11,7 @@
 
 .footer-content {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 3rem;
   margin-bottom: 2rem;
 }
@@ -41,7 +41,8 @@
 }
 
 .footer-links h4,
-.footer-contact h4 {
+.footer-contact h4,
+.footer-social h4 {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -65,13 +66,44 @@
 }
 
 .footer-links a:hover {
-  color: #3498db;
+  color: #f7b500;
 }
 
 .footer-contact p {
   color: #bdc3c7;
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
+}
+
+.contact-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.social-link {
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.social-link p{
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.social-link:hover {
+  color: #f7b500;
 }
 
 .footer-bottom {
@@ -110,12 +142,17 @@
     order: 3;
   }
 
+  .footer-social {
+    order: 4;
+  }
+
   .footer-brand h3 {
     font-size: 1.4rem;
   }
 
   .footer-links h4,
-  .footer-contact h4 {
+  .footer-contact h4,
+  .footer-social h4 {
     font-size: 1rem;
     margin-bottom: 0.75rem;
   }
@@ -155,7 +192,8 @@
   }
 
   .footer-links h4,
-  .footer-contact h4 {
+  .footer-contact h4,
+  .footer-social h4 {
     font-size: 0.95rem;
     margin-bottom: 0.5rem;
   }

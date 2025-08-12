@@ -38,8 +38,37 @@ const Footer = () => {
 
             <div className={style["footer-contact"]}>
               <h4>Contact</h4>
-              <p>📧 info@knockonblock.com</p>
-              <p>📍 Serving Northern NJ & Southern NY</p>
+              <div className={style["contact-items"]}>
+                <a
+                  href="mailto:info@knockonblock.com"
+                  className={style["social-link"]}
+                >
+                  📧 info@knockonblock.com
+                </a>
+
+                <a
+                  href="https://maps.app.goo.gl/4iLjN26peGBpqstU8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={style["social-link"]}
+                >
+                  📍 Serving Northern NJ & Southern NY
+                </a>
+              </div>
+            </div>
+
+            <div className={style["footer-social"]}>
+              <h4>Follow Us</h4>
+              <div className={style["social-links"]}>
+                <a
+                  href="https://www.facebook.com/knockonblock/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={style["social-link"]}
+                >
+                  📘 Facebook
+                </a>
+              </div>
             </div>
           </div>
 
