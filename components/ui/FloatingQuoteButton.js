@@ -1,19 +1,13 @@
-'use client'
+"use client";
 
-import { useScrollToSection } from '@/hooks/useScrollToSection';
-import style from './FloatingQuoteButton.module.css';
+import { scrollToContact } from "@/lib/utils";
+import style from "./FloatingQuoteButton.module.css";
 
 const FloatingQuoteButton = () => {
-  const scrollToSection = useScrollToSection();
-
-  const handleClick = () => {
-    scrollToSection('contact');
-  };
-
   return (
-    <button 
-      className={style['floating-quote-button']}
-      onClick={handleClick}
+    <button
+      className={style["floating-quote-button"]}
+      onClick={scrollToContact}
       aria-label="Request a Quote"
     >
       Request a Quote
