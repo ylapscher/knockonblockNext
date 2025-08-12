@@ -1,42 +1,149 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Primary Colors from Color Palette */
+  --primary-navy: #1A2B49;        /* Navy Blue - Brand/Headings */
+  --accent-yellow: #F7B500;       /* Construction Yellow - Buttons/Highlights */
+  --secondary-gray: #5C677D;      /* Slate Gray - Secondary Accent */
+  --background-white: #F9F9F9;    /* Off-White - Background */
+  --text-charcoal: #333333;       /* Charcoal Gray - Body Text */
+  
+  /* Optional Contrast Colors */
+  --steel-blue: #3D5A80;          /* Steel Blue - Calming handcrafted tones */
+  --olive-green: #6C8B3C;         /* Olive Green - Calming handcrafted tones */
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  color: var(--text-charcoal);
+  background-color: var(--background-white);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.App {
+  min-height: 100vh;
+}
+
+main {
+  position: relative;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Global container styles */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Responsive container padding */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Improved mobile text sizing and spacing */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+    line-height: 1.3;
+  }
+  
+  p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+/* Additional mobile-friendly improvements */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+  }
+  
+  h3 {
+    font-size: 1.2rem;
+  }
+  
+  p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Ensure tap targets are large enough */
+button, .nav-link, .floating-quote-button {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.nav-link {
+  font-weight: 600;
+}
+
+/* Focus styles for keyboard accessibility - WCAG 2.2 AA compliant */
+button:focus-visible,
+.nav-link:focus-visible,
+.floating-quote-button:focus-visible {
+  outline: 2px solid #f7b501;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+/* Fallback for browsers that don't support focus-visible */
+button:focus,
+.nav-link:focus,
+.floating-quote-button:focus {
+  outline: none;
+  outline-offset: none;
+  box-shadow: none;
+}
+
+/* Improve text contrast for better readability */
+@media (prefers-contrast: high) {
+  :root {
+    --text-charcoal: #000000;
+    --secondary-gray: #444444;
   }
 }

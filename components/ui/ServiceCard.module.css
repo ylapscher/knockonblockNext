@@ -1,0 +1,149 @@
+.service-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 1px solid rgba(240, 240, 240, 0.8);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Removed backdrop-filter for better performance */
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-yellow), var(--primary-navy), var(--accent-yellow));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  border-radius: 2px 2px 0 0;
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.05) 0%, rgba(26, 54, 93, 0.02) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover::after {
+  opacity: 1;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  border-color: var(--accent-yellow);
+}
+
+.service-icon {
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1);
+}
+
+.service-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 2;
+  letter-spacing: -0.01em;
+}
+
+.service-card:hover .service-title {
+  color: var(--accent-yellow);
+}
+
+.service-description {
+  color: var(--secondary-gray);
+  line-height: 1.7;
+  font-size: 1rem;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  font-weight: 500;
+}
+
+.service-card:hover .service-description {
+  color: #4a5568;
+}
+
+/* Simplified glow effect on hover */
+.service-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 768px) {
+  .service-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .service-icon {
+    font-size: 3rem;
+    height: 4rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .service-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .service-icon {
+    font-size: 2.75rem;
+    height: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-title {
+    font-size: 1.1rem;
+  }
+
+  .service-description {
+    font-size: 0.9rem;
+  }
+}
