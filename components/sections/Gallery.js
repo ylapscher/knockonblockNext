@@ -69,15 +69,15 @@ const Gallery = () => {
   const maxIndex = Math.ceil(galleryItems.length / itemsPerView) - 1;
 
   // Auto-scroll functionality
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentIndex((prevIndex) =>
-  //       prevIndex === maxIndex ? 0 : prevIndex + 1
-  //     );
-  //   }, 8000); // 8 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === maxIndex ? 0 : prevIndex + 1
+      );
+    }, 8000); // 8 seconds
 
-  //   return () => clearInterval(interval);
-  // }, [maxIndex]);
+    return () => clearInterval(interval);
+  }, [maxIndex]);
 
   const goToPrevious = () => {
     setCurrentIndex(currentIndex === 0 ? maxIndex : currentIndex - 1);
