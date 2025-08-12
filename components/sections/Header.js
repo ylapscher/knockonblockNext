@@ -1,15 +1,15 @@
-'use client'
+"use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 
-import { useState, useEffect, useCallback } from 'react';
-import { useScrollToSection } from '@/hooks/useScrollToSection';
-import style from './Header.module.css';
+import { useState, useEffect, useCallback } from "react";
+import { useScrollToSection } from "@/hooks/useScrollToSection";
+import style from "./Header.module.css";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
   const [isScrolling, setIsScrolling] = useState(false);
 
   const scrollToSection = useScrollToSection();
@@ -17,14 +17,22 @@ const Header = () => {
   // Throttled scroll handler for better performance
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 50);
-    
+
     // Only update active section if not currently scrolling to a specific section
     if (!isScrolling) {
-      const sections = ['home', 'about', 'services', 'gallery', 'testimonials', 'faq', 'contact'];
+      const sections = [
+        "home",
+        "about",
+        "services",
+        "gallery",
+        "testimonials",
+        "faq",
+        "contact",
+      ];
       const scrollPosition = window.scrollY + 150; // Increased offset for better accuracy
-      
-      let newActiveSection = 'home';
-      
+
+      let newActiveSection = "home";
+
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i]);
         if (section && section.offsetTop <= scrollPosition) {
@@ -32,7 +40,7 @@ const Header = () => {
           break;
         }
       }
-      
+
       if (newActiveSection !== activeSection) {
         setActiveSection(newActiveSection);
       }
@@ -41,29 +49,28 @@ const Header = () => {
 
   useEffect(() => {
     let timeoutId;
-    
+
     const throttledScrollHandler = () => {
       if (timeoutId) return;
-      
+
       timeoutId = setTimeout(() => {
         handleScroll();
         timeoutId = null;
       }, 100); // Throttle to 100ms
     };
 
-    window.addEventListener('scroll', throttledScrollHandler);
+    window.addEventListener("scroll", throttledScrollHandler);
     return () => {
-      window.removeEventListener('scroll', throttledScrollHandler);
+      window.removeEventListener("scroll", throttledScrollHandler);
       if (timeoutId) clearTimeout(timeoutId);
     };
   }, [handleScroll]);
 
-
   const handleLogoClick = () => {
-    if (location.pathname !== '/') {
-      navigate('/');
+    if (location.pathname !== "/") {
+      navigate("/");
     } else {
-      scrollToSection('home');
+      scrollToSection("home");
     }
   };
 
@@ -71,11 +78,11 @@ const Header = () => {
     // Immediately set active section and disable scroll-based updates
     setActiveSection(sectionId);
     setIsScrolling(true);
-    
+
     // Scroll to section
     scrollToSection(sectionId);
     setIsMobileMenuOpen(false);
-    
+
     // Re-enable scroll-based updates after scrolling completes
     setTimeout(() => {
       setIsScrolling(false);
@@ -83,40 +90,55 @@ const Header = () => {
   };
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About Zach' },
-    { id: 'services', label: 'Services' },
-    { id: 'gallery', label: 'Gallery' },
-    { id: 'testimonials', label: 'Testimonials' },
-    { id: 'faq', label: 'FAQs' },
-    { id: 'contact', label: 'Contact' }
+    { id: "home", label: "Home" },
+    { id: "about", label: "About Zach" },
+    { id: "services", label: "Services" },
+    { id: "gallery", label: "Gallery" },
+    { id: "testimonials", label: "Testimonials" },
+    { id: "faq", label: "FAQs" },
+    { id: "contact", label: "Contact" },
   ];
 
   return (
-    <header className={`${style.header} ${isScrolled ? style.scrolled : ''}`}>
+    <header className={`${style.header} ${isScrolled ? style.scrolled : ""}`}>
       <div className={style.container}>
-        <div 
+        <div
           onClick={handleLogoClick}
-          className={style['logo']} 
-          style={{ cursor: 'pointer' }}
+          className={style["logo"]}
+          style={{ cursor: "pointer" }}
         >
-          <Image className={style['logo-svg']} src="/logo.png" width={50} height={50} alt="Knock on Block" />
+          <Image
+            className={style["logo-svg"]}
+            src="/logo.jpeg"
+            width={50}
+            height={50}
+            alt="Knock on Block"
+          />
           <span>Knock on Block</span>
         </div>
-        
-        <nav className={`${style.nav} ${isMobileMenuOpen ? style['nav-open'] : ''}`}>
+
+        <nav
+          className={`${style.nav} ${
+            isMobileMenuOpen ? style["nav-open"] : ""
+          }`}
+        >
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavItemClick(item.id)}
-              className={`${style['nav-link']} ${activeSection === item.id ? style.active : ''}`}
+              className={`${style["nav-link"]} ${
+                activeSection === item.id ? style.active : ""
+              }`}
             >
               {item.label}
             </button>
           ))}
         </nav>
 
-        <button className={style['mobile-menu-toggle']} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <button
+          className={style["mobile-menu-toggle"]}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
           <span></span>
           <span></span>
           <span></span>

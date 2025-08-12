@@ -17,10 +17,10 @@ const Hero = () => {
         </div>
         <div className={style["hero-image"]}>
           <Image
-            src="/logo.png"
+            src="/logo.jpeg"
             alt="Knock On Block logo"
-            width={200}
-            height={200}
+            width={400}
+            height={400}
             className={style["placeholder-image"]}
           />
         </div>
