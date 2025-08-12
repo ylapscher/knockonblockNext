@@ -69,15 +69,15 @@ const Gallery = () => {
   const maxIndex = Math.ceil(galleryItems.length / itemsPerView) - 1;
 
   // Auto-scroll functionality
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === maxIndex ? 0 : prevIndex + 1
-      );
-    }, 8000); // 8 seconds
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentIndex((prevIndex) =>
+  //       prevIndex === maxIndex ? 0 : prevIndex + 1
+  //     );
+  //   }, 8000); // 8 seconds
 
-    return () => clearInterval(interval);
-  }, [maxIndex]);
+  //   return () => clearInterval(interval);
+  // }, [maxIndex]);
 
   const goToPrevious = () => {
     setCurrentIndex(currentIndex === 0 ? maxIndex : currentIndex - 1);
@@ -96,10 +96,7 @@ const Gallery = () => {
             <p>Recent projects completed for satisfied customers</p>
           </div>
           <div className={style["gallery-container"]}>
-            <button
-              className={`${style["gallery-arrow"]} ${style["gallery-arrow-left"]}`}
-              onClick={goToPrevious}
-            >
+            <button className={style["gallery-arrow"]} onClick={goToPrevious}>
               &#8249;
             </button>
             <div className={style["gallery-wrapper"]}>
@@ -140,10 +137,7 @@ const Gallery = () => {
                 ))}
               </div>
             </div>
-            <button
-              className={`${style["gallery-arrow"]} ${style["gallery-arrow-right"]}`}
-              onClick={goToNext}
-            >
+            <button className={style["gallery-arrow"]} onClick={goToNext}>
               &#8250;
             </button>
           </div>

@@ -55,13 +55,15 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   margin-bottom: 3rem;
 }
 
 .gallery-wrapper {
-  flex: 1;
-  overflow-x: clip;
+  /* flex: 1; */
+  width: 100%;
+  /* overflow-x: hidden; */
+  overflow-x: hidden;
   border-radius: 20px;
 }
 
@@ -77,6 +79,7 @@
 }
 
 .gallery-group {
+  padding: 1rem 0;
   display: flex;
   gap: 1rem;
   width: 100%;
@@ -86,6 +89,7 @@
 .gallery-arrow {
   background: white;
   border: 3px solid var(--accent-yellow);
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -93,6 +97,7 @@
   color: var(--primary-navy);
   cursor: pointer;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
