@@ -9,7 +9,7 @@
 }
 
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -36,7 +36,7 @@
   color: var(--primary-navy);
   margin-bottom: 1.5rem;
   line-height: 1.1;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hero-text p {
@@ -65,13 +65,18 @@
 }
 
 .cta-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: left 0.5s;
 }
 
@@ -117,8 +122,13 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @media (max-width: 968px) {
@@ -155,18 +165,13 @@
     padding: 1rem 2rem;
     font-size: 1.1rem;
   }
+  .hero-image {
+    width: 250px;
+    height: 250px;
+  }
 
   .placeholder-image {
-    width: 280px;
-    height: 280px;
-  }
-
-  .placeholder-image::before {
-    font-size: 3rem;
-  }
-
-  .placeholder-image::after {
-    font-size: 1rem;
-    bottom: 1.5rem;
+    width: 180px;
+    height: 180px;
   }
 }
