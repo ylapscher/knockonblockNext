@@ -23,9 +23,9 @@
   margin-bottom: 1rem;
 }
 
-.footer-logo-svg {
-  width: 35px;
-  height: 35px;
+.logo-svg {
+  width: 4.5rem;
+  height: 3.8rem;
 }
 
 .footer-brand h3 {
@@ -78,6 +78,7 @@
 .contact-items {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .social-links {
@@ -91,6 +92,7 @@
 .social-link {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 0.5rem;
   color: #bdc3c7;
   text-decoration: none;
@@ -108,7 +110,7 @@
 
 .social-link:hover {
   color: #f7b500;
-  
+
   p {
     color: #f7b500;
   }
@@ -178,6 +180,28 @@
   .footer-bottom p {
     font-size: 0.85rem;
     margin-bottom: 0.25rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0;
+
+    .logo-svg {
+      width: 5rem;
+      height: 4rem;
+    }
+  }
+
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-link {
+    justify-content: center;
   }
 }
 

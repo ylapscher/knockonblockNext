@@ -15,9 +15,9 @@ const Footer = () => {
               <div className={style["footer-logo"]}>
                 <Image
                   className={style["logo-svg"]}
-                  src="/logo.jpeg"
-                  width={100}
-                  height={100}
+                  src="/logo-without-bkg-and-title.png"
+                  width={468}
+                  height={360}
                   alt="Knock on Block"
                 />
                 <h3>Knock on Block</h3>
