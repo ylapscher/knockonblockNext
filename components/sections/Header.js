@@ -109,9 +109,9 @@ const Header = () => {
         >
           <Image
             className={style["logo-svg"]}
-            src="/logo.jpeg"
-            width={50}
-            height={50}
+            src="/logo-without-bkg.png"
+            width={100}
+            height={100}
             alt="Knock on Block"
           />
           <span>Knock on Block</span>
