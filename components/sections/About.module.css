@@ -187,8 +187,13 @@
     padding: 6rem 1rem;
   }
 
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .about-highlights {
-    justify-self: center;
     max-width: 80%;
     grid-template-columns: 1fr;
     gap: 0rem;
