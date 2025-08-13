@@ -5,13 +5,18 @@
 }
 
 .about::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent-yellow), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-yellow),
+    transparent
+  );
 }
 
 .container {
@@ -33,7 +38,7 @@
 }
 
 .about-image::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -20px;
   left: -20px;
@@ -63,7 +68,11 @@
 .placeholder-image {
   width: 280px;
   height: 280px;
-  background: linear-gradient(135deg, var(--primary-navy) 0%, var(--steel-blue) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-navy) 0%,
+    var(--steel-blue) 100%
+  );
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -83,7 +92,7 @@
 }
 
 .about-text h2::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 0;
@@ -155,7 +164,7 @@
     width: 220px;
     height: 220px;
   }
-  
+
   .placeholder-image {
     width: 220px;
     height: 220px;
@@ -179,9 +188,15 @@
   }
 
   .about-highlights {
+    justify-self: center;
+    max-width: 80%;
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1.5rem;
+    gap: 0rem;
+    padding: 0.5rem;
+  }
+
+  .highlight {
+    padding: 0.8rem;
   }
 
   .highlight-number {
