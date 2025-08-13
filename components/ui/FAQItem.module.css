@@ -137,4 +137,9 @@
     padding: 0 1.1rem 1.1rem 1.1rem;
     font-size: 0.85rem;
   }
+
+  .faq-answer-content {
+    padding: 0;
+    padding-top: 1rem;
+  }
 }
