@@ -5,19 +5,48 @@ import style from './Contact.module.css';
 
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
-  // Handle form submission for development environment
-  const handleSubmit = (e) => {
-    // Only prevent default in development mode
-    if (process.env.NODE_ENV === 'development') {
-      e.preventDefault();
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError('');
+
+    const formData = new FormData(e.target);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      location: formData.get('location'),
+      workDescription: formData.get('workDescription'),
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+
       setIsSubmitted(true);
-      console.log('Form submitted (development mode)');
+    } catch (err) {
+      console.error('Contact form error:', err);
+      setError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
-    // In production, let Netlify handle the form normally
   };
 
-  // Show success message in development mode
+  // Show success message
   if (isSubmitted) {
     return (
       <section id="contact" className={style.contact}>
@@ -25,7 +54,6 @@ const Contact = () => {
           <div className={style['success-message']}>
             <h2>Thank You!</h2>
             <p>Thanks for reaching out! We&apos;ll get back to you within 1 business day.</p>
-            <p><em>(Development mode - form submission simulated)</em></p>
             <button 
               onClick={() => setIsSubmitted(false)}
               className={style['back-button']}
@@ -73,22 +101,13 @@ const Contact = () => {
 
           <form 
             className={style['contact-form']} 
-            name="contact" 
-            method="POST" 
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            action={process.env.NODE_ENV === 'production' ? '/thank-you.html' : undefined}
             onSubmit={handleSubmit}
           >
-            {/* Hidden field for Netlify */}
-            <input type="hidden" name="form-name" value="contact" />
-            
-            {/* Honeypot field for spam protection */}
-            <div style={{ display: 'none' }}>
-              <label>
-                Don&apos;t fill this out if you&apos;re human: <input name="bot-field" />
-              </label>
-            </div>
+            {error && (
+              <div className={style['error-message']}>
+                {error}
+              </div>
+            )}
 
             <div className={style['form-group']}>
               <label htmlFor="name">Full Name *</label>
@@ -133,8 +152,12 @@ const Contact = () => {
               ></textarea>
             </div>
 
-            <button type="submit" className={style['submit-button']}>
-              Request Quote
+            <button 
+              type="submit" 
+              className={style['submit-button']}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Sending...' : 'Request Quote'}
             </button>
           </form>
         </div>
