@@ -1,4 +1,4 @@
-import { Resend } from 'resend';
+import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -10,15 +10,15 @@ export async function POST(request) {
     // Validate required fields
     if (!name || !email || !workDescription) {
       return Response.json(
-        { error: 'Missing required fields' },
+        { error: "Missing required fields" },
         { status: 400 }
       );
     }
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: 'Knock on Block <noreply@knockonblock.com>',
-      to: ['info@knockonblock.com'],
+      from: "Knock on Block <noreply@e.knockonblock.com>",
+      to: ["info@knockonblock.com"],
       subject: `New Quote Request from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -28,7 +28,7 @@ export async function POST(request) {
             <h3 style="margin-top: 0; color: #555;">Contact Information</h3>
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Email:</strong> ${email}</p>
-            ${location ? `<p><strong>Location:</strong> ${location}</p>` : ''}
+            ${location ? `<p><strong>Location:</strong> ${location}</p>` : ""}
           </div>
           
           <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
@@ -46,19 +46,13 @@ export async function POST(request) {
     });
 
     if (error) {
-      console.error('Resend error:', error);
-      return Response.json(
-        { error: 'Failed to send email' },
-        { status: 500 }
-      );
+      console.error("Resend error:", error);
+      return Response.json({ error: "Failed to send email" }, { status: 500 });
     }
 
     return Response.json({ success: true, data });
   } catch (error) {
-    console.error('Contact API error:', error);
-    return Response.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    console.error("Contact API error:", error);
+    return Response.json({ error: "Internal server error" }, { status: 500 });
   }
 }
