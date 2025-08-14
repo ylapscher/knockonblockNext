@@ -123,6 +123,23 @@
   box-shadow: 0 4px 15px rgba(247, 181, 0, 0.3);
 }
 
+.submit-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.error-message {
+  background: #fee;
+  color: #c53030;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #feb2b2;
+  font-size: 0.95rem;
+}
+
 .success-message {
   text-align: center;
   padding: 4rem 2rem;
