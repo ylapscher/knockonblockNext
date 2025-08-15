@@ -1,16 +1,16 @@
 export const testimonials = [
   {
     id: 1,
-    name: "Sarah M.",
+    name: "Melissa B.",
     location: "Montvale, NJ",
     rating: 5,
-    text: "Zach was professional, quick, and the quality of work was top-notch! I highly recommend him for any handyman needs. He completed the work efficiently and cleaned up after himself.",
+    text: "Zach installed a Nest, Ring door bell, and fixed our toilet. He was reasonably priced, meticulous, patient and prompt. I would recommend him to anyone. He is a find.",
     date: "March 2024"
   },
   {
     id: 2,
     name: "Mike R.",
-    location: "Bergen County, NJ",
+    location: "Ramsey, NJ",
     rating: 5,
     text: "Excellent service! Zach installed our smart thermostat perfectly and explained everything clearly. His attention to detail and professionalism really impressed us. Will definitely call again.",
     date: "February 2024"
@@ -18,7 +18,7 @@ export const testimonials = [
   {
     id: 3,
     name: "Jennifer L.",
-    location: "Rockland County, NY",
+    location: "Blauvelt, NY",
     rating: 5,
     text: "Very reliable and skilled. Fixed our drywall damage and you can't even tell there was ever a problem. Zach was punctual, courteous, and his work exceeded our expectations. Great work!",
     date: "January 2024"
@@ -26,7 +26,7 @@ export const testimonials = [
   {
     id: 4,
     name: "David K.",
-    location: "Westchester County, NY",
+    location: "Wayne, NJ",
     rating: 5,
     text: "I've used Knock on Block for several projects now and have been consistently impressed. Zach is knowledgeable, fair with pricing, and always delivers quality work. Highly recommended!",
     date: "December 2023"
@@ -42,7 +42,7 @@ export const testimonials = [
   {
     id: 6,
     name: "Robert P.",
-    location: "Rockland County, NY",
+    location: "Suffern, NY",
     rating: 5,
     text: "Zach did a fantastic job installing our reverse osmosis system. He explained the process clearly and completed the work efficiently. Very satisfied with the quality and would recommend to others.",
     date: "October 2023"

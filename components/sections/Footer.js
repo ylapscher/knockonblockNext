@@ -22,7 +22,7 @@ const Footer = () => {
                 />
                 <h3>Knock on Block</h3>
               </div>
-              <p>Reliable handyman services in Northern NJ & Southern NY</p>
+              <p>Knocking Out Repairs, Block by Block!</p>
             </div>
 
             <div className={style["footer-links"]}>
