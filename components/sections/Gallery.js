@@ -12,43 +12,43 @@ const Gallery = () => {
       id: 1,
       title: "TV Mount",
       location: "Hoboken, NJ",
-      image: "📺",
+      image: "/TV-mount.jpg",
       description: "Professional TV wall mounting with cable management",
     },
     {
       id: 2,
       title: "Vanity Install",
       location: "Nyack, NY",
-      image: "🪟",
+      image: "/Bathroom-vanity.jpg",
       description: "Custom bathroom vanity installation and plumbing",
     },
     {
       id: 3,
       title: "Smart Thermostat",
       location: "Montvale, NJ",
-      image: "🌡️",
+      image: "/Smart-thermostat.jpg",
       description: "Smart thermostat installation and setup",
     },
     {
       id: 4,
       title: "Light Fixture Install",
       location: "Paramus, NJ",
-      image: "💡",
+      image: "/Light-fixture.jpg",
       description: "Ceiling fan and pendant light installation",
     },
     {
       id: 5,
       title: "Drywall Repair",
       location: "Ridgewood, NJ",
-      image: "🔧",
+      image: "/Drywall-repair.png",
       description: "Professional drywall patching and painting",
     },
     {
       id: 6,
-      title: "Kitchen Faucet",
-      location: "Pearl River, NY",
-      image: "🚰",
-      description: "Kitchen faucet replacement and installation",
+      title: "Reverse Osmosis System",
+      location: "New City, NY",
+      image: "/RO-filter.jpg",
+      description: "Installation of drinking water filtration system and faucet",
     },
   ];
 
@@ -115,9 +115,17 @@ const Gallery = () => {
                         .map((item) => (
                           <div key={item.id} className={style["gallery-item"]}>
                             <div className={style["gallery-image"]}>
-                              <span className={style["gallery-icon"]}>
-                                {item.image}
-                              </span>
+                              {item.image.startsWith('/') ? (
+                                <img 
+                                  src={item.image} 
+                                  alt={item.title}
+                                  className={style["gallery-photo"]}
+                                />
+                              ) : (
+                                <span className={style["gallery-icon"]}>
+                                  {item.image}
+                                </span>
+                              )}
                             </div>
                             <div className={style["gallery-content"]}>
                               <h3 className={style["gallery-title"]}>
