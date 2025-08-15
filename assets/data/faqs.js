@@ -2,7 +2,7 @@ export const faqs = [
   {
     id: 1,
     question: "What areas do you serve?",
-    answer: "We serve Bergen, Rockland, Orange, Passaic, Hudson, and Essex counties in the Northern New Jersey area."
+    answer: "We serve Bergen, Husdon, Passaic, & Essex counties in Northern New Jersey, as well as Rockland and Orange counties in Southern New York."
   },
   {
     id: 2,
