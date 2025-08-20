@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import style from './Contact.module.css';
+import { services } from '@/assets/data/services';
 
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -15,20 +16,35 @@ const Contact = () => {
     setError('');
 
     const formData = new FormData(e.target);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      location: formData.get('location'),
-      workDescription: formData.get('workDescription'),
-    };
+
+    // Validate attachments client-side (optional photos)
+    const photoFiles = formData.getAll('photos').filter((f) => f && typeof f === 'object');
+    const MAX_TOTAL_BYTES = 25 * 1024 * 1024; // 25 MB
+    const totalBytes = photoFiles.reduce((sum, file) => sum + (file.size || 0), 0);
+    if (totalBytes > MAX_TOTAL_BYTES) {
+      setIsSubmitting(false);
+      setError('Total size of attached photos must be 25 MB or less.');
+      return;
+    }
+    const invalidType = photoFiles.find((file) => !(file.type || '').startsWith('image/'));
+    if (invalidType) {
+      setIsSubmitting(false);
+      setError('Only image files are allowed for attachments.');
+      return;
+    }
+
+    // Ensure a service type is selected
+    const serviceType = formData.get('serviceType');
+    if (!serviceType) {
+      setIsSubmitting(false);
+      setError('Please choose a service type.');
+      return;
+    }
 
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+        body: formData,
       });
 
       const result = await response.json();
@@ -129,6 +145,26 @@ const Contact = () => {
                   required
                 />
               </div>
+              <div className={style['form-group']}>
+                <label htmlFor="phone">Phone</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="e.g. (201) 555-0123"
+                />
+              </div>
+            </div>
+
+            <div className={style['form-group']}>
+              <label htmlFor="serviceType">Type of Work</label>
+              <select id="serviceType" name="serviceType" required defaultValue="">
+                <option value="" disabled>Choose a service...</option>
+                {services.map((svc) => (
+                  <option key={svc.id} value={svc.title}>{svc.title}</option>
+                ))}
+                <option value="Other / My job isn't listed here">Other / My job isn't listed here</option>
+              </select>
             </div>
 
             <div className={style['form-group']}>
@@ -150,6 +186,18 @@ const Contact = () => {
                 placeholder="Please describe the work you need done..."
                 required
               ></textarea>
+            </div>
+
+            <div className={style['form-group']}>
+              <label htmlFor="photos">Photos (optional)</label>
+              <input
+                type="file"
+                id="photos"
+                name="photos"
+                accept="image/*"
+                multiple
+              />
+              <p className={style['help-text']}>Attach images to help us better understand your request. Image files only, up to a total of 25 MB.</p>
             </div>
 
             <button 
