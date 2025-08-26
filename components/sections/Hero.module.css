@@ -19,6 +19,8 @@
   opacity: 0.3;
 }
 
+
+
 .hero-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -98,7 +100,7 @@
   width: 400px;
   height: 400px;
   overflow: hidden;
-  background-color: #fbf9f5;
+  background-color: white;
   border-radius: 50%;
   box-shadow: 0 20px 40px rgba(247, 181, 0, 0.3);
   display: flex;

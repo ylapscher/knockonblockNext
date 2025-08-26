@@ -17,7 +17,7 @@ const Hero = () => {
         </div>
         <div className={style["hero-image"]}>
           <Image
-            src="/logo.jpeg"
+            src="/KOB_Logo_Final_Dark_NoBG.png"
             alt="Knock On Block logo"
             width={400}
             height={400}

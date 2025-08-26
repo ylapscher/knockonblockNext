@@ -157,6 +157,16 @@ const Contact = () => {
             </div>
 
             <div className={style['form-group']}>
+              <label htmlFor="location">Location (City/Zip)</label>
+              <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="e.g. Montvale, NJ 07645"
+              />
+            </div>
+
+            <div className={style['form-group']}>
               <label htmlFor="serviceType">Type of Work</label>
               <select id="serviceType" name="serviceType" required defaultValue="">
                 <option value="" disabled>Choose a service...</option>
@@ -168,22 +178,12 @@ const Contact = () => {
             </div>
 
             <div className={style['form-group']}>
-              <label htmlFor="location">Location (City/Zip)</label>
-              <input
-                type="text"
-                id="location"
-                name="location"
-                placeholder="e.g. Montvale, NJ 07645"
-              />
-            </div>
-
-            <div className={style['form-group']}>
-              <label htmlFor="workDescription">Type of Work Needed *</label>
+              <label htmlFor="workDescription">Additional Details *</label>
               <textarea
                 id="workDescription"
                 name="workDescription"
                 rows="5"
-                placeholder="Please describe the work you need done..."
+                placeholder="Please describe the specific details of your project..."
                 required
               ></textarea>
             </div>
