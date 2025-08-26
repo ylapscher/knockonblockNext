@@ -109,7 +109,7 @@ const Header = () => {
         >
           <Image
             className={style["logo-svg"]}
-            src="/logo-without-bkg.png"
+            src="/KOB_Logo_Final_Dark_NoBG.png"
             width={100}
             height={100}
             alt="Knock on Block"

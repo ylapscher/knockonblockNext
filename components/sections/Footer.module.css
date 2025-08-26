@@ -20,12 +20,19 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .logo-svg {
-  width: 4.5rem;
-  height: 3.8rem;
+  width: 8rem;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.footer-logo:hover .logo-svg {
+  transform: scale(1.05);
 }
 
 .footer-brand h3 {
@@ -38,6 +45,7 @@
 .footer-brand p {
   color: #bdc3c7;
   line-height: 1.6;
+  font-style: italic;
 }
 
 .footer-links h4,
@@ -189,8 +197,9 @@
     margin-bottom: 0;
 
     .logo-svg {
-      width: 5rem;
-      height: 4rem;
+      width: 7rem;
+      height: auto;
+      object-fit: contain;
     }
   }
 
