@@ -2,6 +2,15 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Simple HTML escaper for email content
+const esc = (v) =>
+  String(v ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
 export async function POST(request) {
   try {
     // Accept multipart/form-data for optional photo uploads
@@ -51,23 +60,23 @@ export async function POST(request) {
       from: "Knock on Block <noreply@e.knockonblock.com>",
       to: ["info@knockonblock.com"],
       subject: `New Quote Request from ${name}`,
+      reply_to: email,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333;">New Quote Request</h2>
           
-          <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="margin-top: 0; color: #555;">Contact Information</h3>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
-            ${location ? `<p><strong>Location:</strong> ${location}</p>` : ""}
-          </div>
-          
-          <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="margin-top: 0; color: #555;">Work Details</h3>
-            <p><strong>Service Type:</strong> ${serviceType}</p>
-            <p style="white-space: pre-wrap;">${workDescription}</p>
-          </div>
+                     <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+             <h3 style="margin-top: 0; color: #555;">Contact Information</h3>
+             <p><strong>Name:</strong> ${esc(name)}</p>
+             <p><strong>Email:</strong> ${esc(email)}</p>
+             ${phone ? `<p><strong>Phone:</strong> ${esc(phone)}</p>` : ""}
+             ${location ? `<p><strong>Location:</strong> ${esc(location)}</p>` : ""}
+           </div>          
+                     <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+             <h3 style="margin-top: 0; color: #555;">Work Details</h3>
+             <p><strong>Service Type:</strong> ${esc(serviceType)}</p>
+             <p style="white-space: pre-wrap;">${esc(workDescription)}</p>
+           </div>
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;">
             <p style="color: #666; font-size: 14px;">

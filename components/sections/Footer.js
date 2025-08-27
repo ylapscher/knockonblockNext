@@ -14,7 +14,15 @@ const Footer = () => {
             <div className={style["footer-brand"]}>
               <div 
                 className={style["footer-logo"]}
+                role="button"
+                tabIndex={0}
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ' || e.keyCode === 13 || e.keyCode === 32) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
                 style={{ cursor: 'pointer' }}
               >
                 <Image

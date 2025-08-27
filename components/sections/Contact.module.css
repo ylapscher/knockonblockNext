@@ -91,7 +91,13 @@
   margin-bottom: 0.5rem;
 }
 
-.form-group input,
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="url"],
+.form-group input[type="search"],
+.form-group input[type="password"],
+.form-group input[type="number"],
 .form-group textarea,
 .form-group select {
   width: 100%;
@@ -104,6 +110,7 @@
 }
 
 .form-group input[type="file"] {
+  width: 100%;
   padding: 0.75rem;
   border: 2px solid #e9ecef;
   border-radius: 8px;
@@ -147,11 +154,21 @@
   background: #34495e;
 }
 
-.form-group input:focus,
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="url"]:focus,
+.form-group input[type="search"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="number"]:focus,
 .form-group textarea:focus,
 .form-group select:focus {
   outline: none;
   border-color: var(--accent-yellow);
+}
+
+.form-group select:invalid {
+  color: #6c757d;
 }
 
 .form-group input[type="file"]:focus {
@@ -199,6 +216,21 @@
   margin-bottom: 1.5rem;
   border: 1px solid #feb2b2;
   font-size: 0.95rem;
+}
+
+.field-error {
+  color: var(--danger, #c53030);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.help-text {
+  color: var(--secondary-gray);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+  font-style: italic;
 }
 
 .success-message {

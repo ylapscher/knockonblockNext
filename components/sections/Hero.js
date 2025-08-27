@@ -22,6 +22,8 @@ const Hero = () => {
             width={400}
             height={400}
             className={style["placeholder-image"]}
+            priority
+            sizes="(max-width: 640px) 180px, (max-width: 968px) 350px, 350px"
           />
         </div>
       </div>

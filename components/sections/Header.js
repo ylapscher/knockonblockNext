@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useScrollToSection } from "@/hooks/useScrollToSection";
 import style from "./Header.module.css";
+import { SCROLL_CONFIG, HEADER_CONFIG } from "../../lib/constants";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,11 +14,19 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolling, setIsScrolling] = useState(false);
 
+  const router = useRouter();
+  const pathname = usePathname();
   const scrollToSection = useScrollToSection();
+  
+  // Refs for scroll completion detection
+  const scrollTimeoutRef = useRef(null);
+  const scrollEndTimeoutRef = useRef(null);
+  const lastScrollYRef = useRef(0);
+  const lastScrollXRef = useRef(0);
 
   // Throttled scroll handler for better performance
   const handleScroll = useCallback(() => {
-    setIsScrolled(window.scrollY > 50);
+    setIsScrolled(window.scrollY > HEADER_CONFIG.SCROLL_THRESHOLD);
 
     // Only update active section if not currently scrolling to a specific section
     if (!isScrolling) {
@@ -29,7 +39,7 @@ const Header = () => {
         "faq",
         "contact",
       ];
-      const scrollPosition = window.scrollY + 150; // Increased offset for better accuracy
+      const scrollPosition = window.scrollY + HEADER_CONFIG.ACTIVE_SECTION_OFFSET; // Configurable offset for better accuracy
 
       let newActiveSection = "home";
 
@@ -56,10 +66,10 @@ const Header = () => {
       timeoutId = setTimeout(() => {
         handleScroll();
         timeoutId = null;
-      }, 100); // Throttle to 100ms
+      }, SCROLL_CONFIG.THROTTLE_INTERVAL); // Configurable throttle interval
     };
 
-    window.addEventListener("scroll", throttledScrollHandler);
+    window.addEventListener("scroll", throttledScrollHandler, { passive: true });
     return () => {
       window.removeEventListener("scroll", throttledScrollHandler);
       if (timeoutId) clearTimeout(timeoutId);
@@ -67,10 +77,18 @@ const Header = () => {
   }, [handleScroll]);
 
   const handleLogoClick = () => {
-    if (location.pathname !== "/") {
-      navigate("/");
+    if (pathname !== "/") {
+      router.push("/");
     } else {
-      scrollToSection("home");
+      // Use promise-based scroll completion detection for consistency
+      const scrollPromise = scrollToSection("home", { returnPromise: true });
+      if (scrollPromise && typeof scrollPromise.then === 'function') {
+        scrollPromise.then(() => {
+          // Scroll completed successfully
+        }).catch(() => {
+          // Scroll failed, but that's okay for logo click
+        });
+      }
     }
   };
 
@@ -79,15 +97,101 @@ const Header = () => {
     setActiveSection(sectionId);
     setIsScrolling(true);
 
-    // Scroll to section
-    scrollToSection(sectionId);
+    // Scroll to section with promise-based completion detection
+    const scrollPromise = scrollToSection(sectionId, { returnPromise: true });
     setIsMobileMenuOpen(false);
 
-    // Re-enable scroll-based updates after scrolling completes
-    setTimeout(() => {
-      setIsScrolling(false);
-    }, 1000); // Wait for scroll animation to complete
+    // Clear any existing scroll completion detection
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    if (scrollEndTimeoutRef.current) {
+      clearTimeout(scrollEndTimeoutRef.current);
+    }
+
+    // Use the promise-based approach if available, otherwise fall back to manual detection
+    if (scrollPromise && typeof scrollPromise.then === 'function') {
+      scrollPromise.then(() => {
+        setIsScrolling(false);
+      }).catch(() => {
+        // Fallback to manual detection if promise fails
+        startScrollCompletionDetection();
+      });
+    } else {
+      // Fallback to manual detection for older browsers or when promise isn't available
+      startScrollCompletionDetection();
+    }
   };
+
+  // Function to detect when scrolling has completed
+  const startScrollCompletionDetection = useCallback(() => {
+    // Method 1: Use 'scrollend' event if supported (most reliable)
+    if ('onscrollend' in window) {
+      const handleScrollEnd = () => {
+        setIsScrolling(false);
+        // Clean up the event listener
+        window.removeEventListener('scrollend', handleScrollEnd);
+      };
+      window.addEventListener('scrollend', handleScrollEnd, { once: true });
+      
+      // Fallback timeout in case scrollend doesn't fire
+      scrollTimeoutRef.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, SCROLL_CONFIG.TIMEOUT_DURATION);
+      
+      return;
+    }
+
+    // Method 2: Monitor scroll events and detect when scrolling stops
+    const checkScrollCompletion = () => {
+      const currentScrollY = window.scrollY;
+      const currentScrollX = window.scrollX;
+      
+      // If scroll position hasn't changed, scrolling might be complete
+      if (currentScrollY === lastScrollYRef.current && 
+          currentScrollX === lastScrollXRef.current) {
+        
+        // Wait a bit more to ensure scrolling is really complete
+        scrollEndTimeoutRef.current = setTimeout(() => {
+          const finalScrollY = window.scrollY;
+          const finalScrollX = window.scrollX;
+          
+          if (finalScrollY === currentScrollY && finalScrollX === currentScrollX) {
+            setIsScrolling(false);
+          }
+        }, SCROLL_CONFIG.COMPLETION_DEBOUNCE);
+        
+        return;
+      }
+      
+      // Update last scroll position
+      lastScrollYRef.current = currentScrollY;
+      lastScrollXRef.current = currentScrollX;
+      
+      // Continue monitoring
+      scrollTimeoutRef.current = setTimeout(checkScrollCompletion, SCROLL_CONFIG.POSITION_CHECK_INTERVAL);
+    };
+
+    // Start monitoring after a short delay to allow scrolling to begin
+    scrollTimeoutRef.current = setTimeout(checkScrollCompletion, SCROLL_CONFIG.INITIAL_DETECTION_DELAY);
+    
+    // Fallback timeout in case scroll detection fails
+    scrollTimeoutRef.current = setTimeout(() => {
+      setIsScrolling(false);
+    }, SCROLL_CONFIG.TIMEOUT_DURATION);
+  }, []);
+
+  // Clean up timeouts on unmount
+  useEffect(() => {
+    return () => {
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      if (scrollEndTimeoutRef.current) {
+        clearTimeout(scrollEndTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const navItems = [
     { id: "home", label: "Home" },

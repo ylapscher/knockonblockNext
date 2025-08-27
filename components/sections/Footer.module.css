@@ -35,6 +35,15 @@
   transform: scale(1.05);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .footer-logo .logo-svg {
+    transition: none;
+  }
+  .footer-logo:hover .logo-svg {
+    transform: none;
+  }
+}
+
 .footer-brand h3 {
   font-size: 1.5rem;
   font-weight: bold;
