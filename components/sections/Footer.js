@@ -12,15 +12,26 @@ const Footer = () => {
         <div className={style["footer-wrapper"]}>
           <div className={style["footer-content"]}>
             <div className={style["footer-brand"]}>
-              <div className={style["footer-logo"]}>
+              <div 
+                className={style["footer-logo"]}
+                role="button"
+                tabIndex={0}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ' || e.keyCode === 13 || e.keyCode === 32) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
+                style={{ cursor: 'pointer' }}
+              >
                 <Image
                   className={style["logo-svg"]}
-                  src="/new-logo.png"
-                  width={468}
-                  height={360}
+                  src="/KOB_Logo_Final_White_NoBG.png"
+                  width={600}
+                  height={462}
                   alt="Knock on Block"
                 />
-                <h3>Knock on Block</h3>
               </div>
               <p>Knocking Out Repairs, Block by Block!</p>
             </div>

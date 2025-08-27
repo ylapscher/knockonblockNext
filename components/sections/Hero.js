@@ -17,11 +17,13 @@ const Hero = () => {
         </div>
         <div className={style["hero-image"]}>
           <Image
-            src="/logo.jpeg"
+            src="/KOB_Logo_Final_Dark_NoBG.png"
             alt="Knock On Block logo"
             width={400}
             height={400}
             className={style["placeholder-image"]}
+            priority
+            sizes="(max-width: 640px) 180px, (max-width: 968px) 350px, 350px"
           />
         </div>
       </div>

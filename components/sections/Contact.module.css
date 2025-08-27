@@ -69,10 +69,19 @@
   margin-bottom: 1.5rem;
 }
 
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-row .form-group {
+  margin-bottom: 0;
 }
 
 .form-group label {
@@ -82,8 +91,15 @@
   margin-bottom: 0.5rem;
 }
 
-.form-group input,
-.form-group textarea {
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="url"],
+.form-group input[type="search"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
   width: 100%;
   padding: 0.75rem;
   border: 2px solid #e9ecef;
@@ -93,8 +109,69 @@
   font-family: inherit;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.form-group input[type="file"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin-right: 0.75rem;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button:hover {
+  background: #34495e;
+}
+
+.form-group input[type="file"]::file-selector-button {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin-right: 0.75rem;
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+  background: #34495e;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="url"]:focus,
+.form-group input[type="search"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="number"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--accent-yellow);
+}
+
+.form-group select:invalid {
+  color: #6c757d;
+}
+
+.form-group input[type="file"]:focus {
   outline: none;
   border-color: var(--accent-yellow);
 }
@@ -102,6 +179,7 @@
 .form-group textarea {
   resize: vertical;
   min-height: 120px;
+  margin-bottom: 0;
 }
 
 .submit-button {
@@ -138,6 +216,21 @@
   margin-bottom: 1.5rem;
   border: 1px solid #feb2b2;
   font-size: 0.95rem;
+}
+
+.field-error {
+  color: var(--danger, #c53030);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.help-text {
+  color: var(--secondary-gray);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+  font-style: italic;
 }
 
 .success-message {
