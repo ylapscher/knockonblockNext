@@ -19,7 +19,7 @@ export default function ComingSoon() {
             Coming Soon
           </h2>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            We're working hard to bring you the best handyman services in Northern New Jersey and Southern New York. 
+            We're working hard to bring you the best handyman services. 
             Our new website is under construction and will be launching soon!
           </p>
         </div>
@@ -45,24 +45,6 @@ export default function ComingSoon() {
               <h4 className="font-semibold mb-2">Home Repairs</h4>
               <p className="text-sm text-gray-300">Drywall repair, plumbing, and electrical work</p>
             </div>
-          </div>
-        </div>
-
-        {/* Contact Information */}
-        <div className="mb-12">
-          <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-accent-yellow">
-            Get In Touch
-          </h3>
-          <div className="space-y-4 text-lg">
-            <p className="text-gray-200">
-              <span className="font-semibold">Service Areas:</span> Northern NJ & Southern NY
-            </p>
-            <p className="text-gray-200">
-              <span className="font-semibold">Email:</span> info@knockonblock.com
-            </p>
-            <p className="text-gray-200">
-              <span className="font-semibold">Phone:</span> (555) 123-4567
-            </p>
           </div>
         </div>
 
