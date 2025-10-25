@@ -90,7 +90,6 @@ const Footer = () => {
               &copy; 2025 Knock on Block Handyman Services LLC. All rights
               reserved.
             </p>
-            <p>Fully insured. NJ HIC Reg. #______</p>
           </div>
         </div>
       </div>
