@@ -167,13 +167,6 @@ const Contact = () => {
                 </div>
               </div>
               <div className={style['contact-item']}>
-                <span className={style['contact-icon']}>📍</span>
-                <div>
-                  <strong>Service Areas</strong>
-                  <p>Bergen, Rockland, Orange, Passaic, Hudson, and Essex counties</p>
-                </div>
-              </div>
-              <div className={style['contact-item']}>
                 <span className={style['contact-icon']}>⏰</span>
                 <div>
                   <strong>Response Time</strong>
@@ -233,15 +226,6 @@ const Contact = () => {
                </div>
             </div>
 
-            <div className={style['form-group']}>
-              <label htmlFor="location">Location (City/Zip)</label>
-              <input
-                type="text"
-                id="location"
-                name="location"
-                placeholder="e.g. Montvale, NJ 07645"
-              />
-            </div>
 
                          <div className={style['form-group']}>
                <label htmlFor="serviceType">Type of Work *</label>

@@ -52,9 +52,8 @@ const TermsConditions = () => {
             <li>This guarantee is provided in addition to statutory rights under applicable consumer protection legislation.</li>
           </ul>
 
-          <h2>6. Liability and Insurance</h2>
+          <h2>6. Liability</h2>
           <ul>
-            <li>The Company carries general liability insurance and is fully insured for the work performed.</li>
             <li>The Company is only liable for works it completes and does not accept responsibility for consequential damages or defects from uncompleted or unrelated work.</li>
             <li>The Company's liability is limited to the cost of the work performed.</li>
             <li>The Company is not liable for delays caused by factors beyond its reasonable control, including but not limited to acts of God, supplier delays, or Customer inaccessibility.</li>
@@ -87,7 +86,7 @@ const TermsConditions = () => {
           <ul>
             <li>In the event of a dispute, the Company will seek to resolve the issue amicably with the Customer.</li>
             <li>If a resolution cannot be reached, both parties agree to attempt mediation before pursuing legal action.</li>
-            <li>These terms shall be governed by the laws of New Jersey and New York as applicable to the service location.</li>
+            <li>These terms shall be governed by applicable laws.</li>
           </ul>
 
           <h2>11. Privacy and Photography</h2>
@@ -103,8 +102,6 @@ const TermsConditions = () => {
           <div className={style['contact-info']}>
             <p><strong>Knock on Block Handyman Services LLC</strong></p>
             <p>Email: info@knockonblock.com</p>
-            <p>Serving Northern NJ & Southern NY</p>
-            <p>NJ HIC Reg. #______</p>
           </div>
 
           <p className={style['last-updated']}>Last Updated: {new Date().toLocaleDateString()}</p>
