@@ -9,7 +9,7 @@ const Hero = () => {
     <section id="home" className={style.hero}>
       <div className={style["hero-content"]}>
         <div className={style["hero-text"]}>
-          <h1>Reliable Handyman Services in Northern NJ & Southern NY</h1>
+          <h1>Reliable Handyman Services</h1>
           <p>Professional help from someone you can trust.</p>
           <button onClick={scrollToContact} className={style["cta-button"]}>
             Request a Quote

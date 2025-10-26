@@ -11,42 +11,36 @@ const Gallery = () => {
     {
       id: 1,
       title: "TV Mount",
-      location: "Hoboken, NJ",
       image: "/TV-mount.jpg",
       description: "Professional TV wall mounting with cable management",
     },
     {
       id: 2,
       title: "Vanity Install",
-      location: "Nyack, NY",
       image: "/Bathroom-vanity.jpg",
       description: "Custom bathroom vanity installation and plumbing",
     },
     {
       id: 3,
       title: "Smart Thermostat",
-      location: "Montvale, NJ",
       image: "/Smart-thermostat.jpg",
       description: "Smart thermostat installation and setup",
     },
     {
       id: 4,
       title: "Light Fixture Install",
-      location: "Paramus, NJ",
       image: "/Light-fixture.jpg",
       description: "Ceiling fan and pendant light installation",
     },
     {
       id: 5,
       title: "Drywall Repair",
-      location: "Ridgewood, NJ",
       image: "/Drywall-repair.png",
       description: "Professional drywall patching and painting",
     },
     {
       id: 6,
       title: "Reverse Osmosis System",
-      location: "New City, NY",
       image: "/RO-filter.jpg",
       description: "Installation of drinking water filtration system and faucet",
     },
@@ -131,9 +125,6 @@ const Gallery = () => {
                               <h3 className={style["gallery-title"]}>
                                 {item.title}
                               </h3>
-                              <p className={style["gallery-location"]}>
-                                📍 {item.location}
-                              </p>
                               <p className={style["gallery-description"]}>
                                 {item.description}
                               </p>

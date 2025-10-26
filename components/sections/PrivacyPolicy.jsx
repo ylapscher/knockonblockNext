@@ -90,7 +90,6 @@ const PrivacyPolicy = () => {
           <div className={style['contact-info']}>
             <p><strong>Knock on Block Handyman Services LLC</strong></p>
             <p>Email: info@knockonblock.com</p>
-            <p>Serving Northern NJ & Southern NY</p>
           </div>
 
           <p className={style['last-updated']}>Last Edited on {new Date().toLocaleDateString()}</p>

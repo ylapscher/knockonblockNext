@@ -58,14 +58,6 @@ const Footer = () => {
                   📧 info@knockonblock.com
                 </a>
 
-                <a
-                  href="https://maps.app.goo.gl/4iLjN26peGBpqstU8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={style["social-link"]}
-                >
-                  📍 Serving Northern NJ & Southern NY
-                </a>
               </div>
             </div>
 
