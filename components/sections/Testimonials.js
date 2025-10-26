@@ -122,7 +122,7 @@ const Testimonials = () => {
 
           <div className={style["testimonials-footer"]}>
             <p>
-              Join hundreds of satisfied customers in Northern NJ & Southern NY
+              Join hundreds of satisfied customers!
             </p>
           </div>
         </div>
