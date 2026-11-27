@@ -102,6 +102,7 @@
 .form-group select {
   width: 100%;
   padding: 0.75rem;
+  background-color: #fff;
   border: 2px solid #e9ecef;
   border-radius: 8px;
   font-size: 1rem;
