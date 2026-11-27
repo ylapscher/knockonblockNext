@@ -1,11 +1,19 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import style from "./Footer.module.css";
 import { FaFacebook } from "react-icons/fa";
 
 const Footer = () => {
+  // Start with the build year (matches the prerendered HTML), then switch to
+  // the visitor's current year after hydration.
+  const [year, setYear] = useState(process.env.NEXT_PUBLIC_BUILD_YEAR);
+  useEffect(() => {
+    setYear(String(new Date().getFullYear()));
+  }, []);
+
   return (
     <footer className={style.footer}>
       <div className={style.container}>
@@ -79,7 +87,7 @@ const Footer = () => {
 
           <div className={style["footer-bottom"]}>
             <p>
-              &copy; 2025 Knock on Block Handyman Services LLC. All rights
+              &copy; {year} Knock on Block Handyman Services LLC. All rights
               reserved.
             </p>
           </div>

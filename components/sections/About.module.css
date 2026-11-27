@@ -2,6 +2,8 @@
   padding: 8rem 2rem;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   position: relative;
+  /* The photo's decorative glow extends past the column; keep it from widening the page on phones */
+  overflow-x: clip;
 }
 
 .about::before {

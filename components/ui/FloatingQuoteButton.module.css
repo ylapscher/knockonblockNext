@@ -16,6 +16,13 @@
   white-space: nowrap;
 }
 
+.floating-quote-button.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(1rem);
+  pointer-events: none;
+}
+
 .floating-quote-button:hover {
   background: #f7b500;
   transform: translateY(-2px);
